@@ -40,7 +40,7 @@ void LegalizeLCE::runOnFunction() {
 
   patterns.insert<
       LegalizeToCustomOp<lq::QuantizeOp>, LegalizeToCustomOp<lq::DequantizeOp>,
-      LegalizeToCustomOp<lq::Bconv2dOp>, LegalizeToCustomOp<lq::BMaxPool2dOp>>(
+      LegalizeToCustomOp<lq::Bconv2dOp>, LegalizeToCustomOp<lq::BMaxPool2dOp>, LegalizeToCustomOp<lq::BPairwiseHammingOp>>(
       ctx);
 
   applyPatternsAndFoldGreedily(func, patterns);

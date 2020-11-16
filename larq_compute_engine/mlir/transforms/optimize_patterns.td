@@ -172,3 +172,5 @@ def : Pat<(LQ_QuantizeOp (TFL_MaxPool2DOp: $pool_output $input,
                            $filter_width,
                            $filter_height),
           [(HasOneUse $pool_output)]>;
+
+//def : Pat<(TFL_DummyPairwiseHamming $arg), (LQ_BPairwiseHammingOp $arg)>;

@@ -27,7 +27,31 @@ def TFL_PAD_Valid : StrEnumAttrCase<"VALID">;
 def TFL_PaddingAttr : StrEnumAttr<"Padding", "padding enum", [
       TFL_PAD_Same, TFL_PAD_Valid
     ]>;
+
 #endif
+/*
+def TFL_DummyPairwiseHamming: TFL_Op<"DummyPairwiseHamming"> {
+
+  let summary = [{
+pairwise hamming distance op
+  }];
+
+  let description = [{
+Computes whatever
+  }];
+
+  let arguments = (ins
+    //TensorOf<[TF_Float32]>:$x
+    //TensorOf<[TF_Bfloat16, TF_Float16, TF_Float32, TF_Float64, TF_Int16, TF_Int32, TF_Int64, TF_Int8]>:$x
+    TFL_TensorOf<[F32]>:$x
+  );
+
+  let results = (outs
+    //TensorOf<[TF_Bfloat16, TF_Float16, TF_Float32, TF_Float64, TF_Int16, TF_Int32, TF_Int64, TF_Int8]>:$a
+    TFL_TensorOf<[I32]>:$a
+  );
+}*/
+
 
 //===----------------------------------------------------------------------===//
 // Larq dialect definitions
@@ -156,24 +180,7 @@ Computes a MaxPool2D operation and outputs bitpacked binary values, for consumpt
   );
 }
 
-def PairwiseHamming : TF_Op<"PairwiseHamming", [NoSideEffect]> {
 
-  let summary = [{
-pairwise hamming distance op
-  }];
-
-  let description = [{
-Computes whatever
-  }];
-
-  let arguments = (ins
-    TensorOf<[TF_Float32]>:$input
-  );
-
-  let results = (outs
-    TensorOf<[TF_Int32]>:$output
-  );
-}
 
 def LQ_BPairwiseHammingOp : LQ_Op<"BPairwiseHamming", [NoSideEffect]> {
   let summary = [{
@@ -185,11 +192,32 @@ Computes whatever
   }];
 
   let arguments = (ins
-    TensorOf<[I32]>:$input
+    TensorOf<[F32]>:$input
   );
 
   let results = (outs
-    TensorOf<[I32]>:$output
+    TensorOf<[F32]>:$output
+  );
+}
+
+def LQ_DummyPairwiseHamming : LQ_Op<"MANGEMESBOULES"> {
+  let summary = [{
+pairwise hamming distance op
+  }];
+
+  let description = [{
+Computes whatever
+  }];
+
+  let arguments = (ins
+    //TensorOf<[TF_Float32]>:$x
+    //TensorOf<[TF_Bfloat16, TF_Float16, TF_Float32, TF_Float64, TF_Int16, TF_Int32, TF_Int64, TF_Int8]>:$x
+    TensorOf<[F32]>:$x
+  );
+
+  let results = (outs
+    //TensorOf<[TF_Bfloat16, TF_Float16, TF_Float32, TF_Float64, TF_Int16, TF_Int32, TF_Int64, TF_Int8]>:$a
+    TensorOf<[I32]>:$a
   );
 }
 

@@ -69,6 +69,8 @@ pybind11::bytes ConvertGraphDefToTFLiteFlatBuffer(
                                                     /*propagate=*/true);
   auto module = ConvertGraphdefToMlir(graphdef, debug_info, specs, &context);
 
+  std::cout << module.status() << std::endl;
+
   if (!module.ok()) {
     throw std::runtime_error("Could not convert GraphDef.");
   }

@@ -44,6 +44,7 @@ gentbl(
     td_file = "transforms/prepare_patterns.td",
     td_srcs = [
         "ir/lce_ops.td",
+	"ir/custom_tfl_ops.td",
         "transforms/op_removal_patterns.td",
         "@llvm-project//mlir:StdOpsTdFiles",
         "@org_tensorflow//tensorflow/compiler/mlir/tensorflow:tensorflow_ops_td_files",
@@ -100,6 +101,7 @@ cc_library(
     srcs = [
         "ir/lce_dialect.h.inc",
         "ir/lce_ops.cc",
+	"ir/hamming.cc",
         "ir/lce_ops.cc.inc",
         "ir/lce_ops.h.inc",
     ],

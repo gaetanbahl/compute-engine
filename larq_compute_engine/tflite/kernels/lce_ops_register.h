@@ -27,7 +27,7 @@ inline void RegisterLCECustomOps(::tflite::MutableOpResolver* resolver) {
                       compute_engine::tflite::Register_BCONV_2D());
   resolver->AddCustom("LceBMaxPool2d",
                       compute_engine::tflite::Register_BMAXPOOL_2D());
-  resolver->AddCustom("PairwiseHamming",
+  resolver->AddCustom("LceBPairwiseHamming",
                       compute_engine::tflite::Register_BHAMMING());
 };
 

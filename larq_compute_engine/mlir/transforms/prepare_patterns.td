@@ -3,6 +3,7 @@ include "tensorflow/compiler/mlir/lite/ir/tfl_ops.td"
 include "tensorflow/compiler/mlir/tensorflow/ir/tf_ops.td"
 include "larq_compute_engine/mlir/ir/lce_ops.td"
 include "larq_compute_engine/mlir/transforms/op_removal_patterns.td"
+include "larq_compute_engine/mlir/ir/custom_tfl_ops.td"
 
 
 // This relies on implementation details of larq.math.sign. We should make
@@ -114,6 +115,4 @@ def : Pat<(TF_Conv2DOp:$output
            (ValidFilterShape $dequantized_input, $filter_op)],
           (addBenefit 90)>;
 
-
-def : Pat<(PairwiseHamming $arg),
-	     (LQ_BPairwiseHammingOp $arg)>;
+def : Pat<(TF_TileOp(TF_SinOp $arg), $reps), (LQ_BPairwiseHammingOp $arg)>;

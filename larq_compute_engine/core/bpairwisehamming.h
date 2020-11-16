@@ -24,19 +24,19 @@ using namespace tflite;
 void BPairwiseHamming(const RuntimeShape& input_shape,
               const TBitpacked* input_data, const RuntimeShape& output_shape,
               TBitpacked* output_data) {
-  TFLITE_DCHECK_EQ(input_shape.DimensionsCount(), 4);
-  TFLITE_DCHECK_EQ(output_shape.DimensionsCount(), 4);
+  TFLITE_DCHECK_EQ(input_shape.DimensionsCount(), 3);
+  TFLITE_DCHECK_EQ(output_shape.DimensionsCount(), 3);
   const int batches = MatchingDim(input_shape, 0, output_shape, 0);
   const int input_height = input_shape.Dims(1);
   const int input_width = input_shape.Dims(2);
   const int output_height = output_shape.Dims(1);
   const int output_width = output_shape.Dims(2);
-  const int filter_height = params.filter_height;
+  /*const int filter_height = params.filter_height;
   const int filter_width = params.filter_width;
   const int stride_height = params.stride_height;
-  const int stride_width = params.stride_width;
+  const int stride_width = params.stride_width;*/
   const int channels = MatchingDim(input_shape, 3, output_shape, 3);
-
+/*
   for (int batch = 0; batch < batches; ++batch) {
     for (int out_y = 0; out_y < output_height; ++out_y) {
       for (int out_x = 0; out_x < output_width; ++out_x) {
@@ -84,7 +84,15 @@ void BPairwiseHamming(const RuntimeShape& input_shape,
         }
       }
     }
+  }*/
+#if RUY_PLATFORM_NEON && RUY_OPT(ASM) && RUY_PLATFORM_NEON_64
+  for (int batch= 0; batch<batches; ++ batch) {
+
   }
+
+
+#endif
+
 }
 
 }  // namespace core
