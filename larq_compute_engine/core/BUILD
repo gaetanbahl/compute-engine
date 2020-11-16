@@ -20,3 +20,15 @@ cc_library(
         "@org_tensorflow//tensorflow/lite/kernels/internal:types",
     ],
 )
+
+cc_library(
+    name = "bpairwisehamming",
+    hdrs = [
+        "bpairwisehamming.h",
+    ],
+    deps = [
+        ":types",
+        "@org_tensorflow//tensorflow/lite/kernels/internal:common",
+        "@org_tensorflow//tensorflow/lite/kernels/internal:types",
+    ],
+)

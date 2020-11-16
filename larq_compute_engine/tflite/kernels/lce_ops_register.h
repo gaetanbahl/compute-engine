@@ -14,6 +14,7 @@ TfLiteRegistration* Register_QUANTIZE();
 TfLiteRegistration* Register_DEQUANTIZE();
 TfLiteRegistration* Register_BCONV_2D();
 TfLiteRegistration* Register_BMAXPOOL_2D();
+TfLiteRegistration* Register_BHAMMING();
 
 // By calling this function on TF lite mutable op resolver, all LCE custom ops
 // will be registerd to the op resolver.
@@ -26,6 +27,8 @@ inline void RegisterLCECustomOps(::tflite::MutableOpResolver* resolver) {
                       compute_engine::tflite::Register_BCONV_2D());
   resolver->AddCustom("LceBMaxPool2d",
                       compute_engine::tflite::Register_BMAXPOOL_2D());
+  resolver->AddCustom("PairwiseHamming",
+                      compute_engine::tflite::Register_BHAMMING());
 };
 
 }  // namespace tflite

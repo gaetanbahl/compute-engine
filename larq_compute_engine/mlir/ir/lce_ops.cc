@@ -67,6 +67,13 @@ void QuantizeOp::build(OpBuilder& builder, OperationState& state, Value x) {
   state.addTypes(RankedTensorType::get(shape, builder.getIntegerType(32)));
 }
 
+
+std::vector<uint8_t> BPairwiseHammingOp::buildCustomOptions() {
+  return {};
+}
+
+
+
 void LarqDialect::initialize() {
   addOperations<
 #define GET_OP_LIST

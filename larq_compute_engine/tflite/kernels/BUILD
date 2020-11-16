@@ -24,6 +24,7 @@ cc_library(
         "bconv2d.cc",
         "bmaxpool.cc",
         "quantization.cc",
+        "bpairwisehamming.cc",
     ],
     hdrs = [
         "lce_ops_register.h",
@@ -32,6 +33,7 @@ cc_library(
     deps = [
         ":utils",
         "//larq_compute_engine/core:bmaxpool",
+        "//larq_compute_engine/core:bpairwisehamming",
         "//larq_compute_engine/core/bconv2d:optimized_bgemm",
         "//larq_compute_engine/core/bconv2d:optimized_indirect_bgemm",
         "//larq_compute_engine/core/bconv2d:params",

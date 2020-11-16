@@ -156,4 +156,41 @@ Computes a MaxPool2D operation and outputs bitpacked binary values, for consumpt
   );
 }
 
+def PairwiseHamming : TF_Op<"PairwiseHamming", [NoSideEffect]> {
+
+  let summary = [{
+pairwise hamming distance op
+  }];
+
+  let description = [{
+Computes whatever
+  }];
+
+  let arguments = (ins
+    TensorOf<[TF_Float32]>:$input
+  );
+
+  let results = (outs
+    TensorOf<[TF_Int32]>:$output
+  );
+}
+
+def LQ_BPairwiseHammingOp : LQ_Op<"BPairwiseHamming", [NoSideEffect]> {
+  let summary = [{
+Binary pairwise hamming distance op
+  }];
+
+  let description = [{
+Computes whatever
+  }];
+
+  let arguments = (ins
+    TensorOf<[I32]>:$input
+  );
+
+  let results = (outs
+    TensorOf<[I32]>:$output
+  );
+}
+
 #endif // LARQ_DIALECT

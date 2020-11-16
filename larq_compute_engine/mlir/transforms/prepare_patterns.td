@@ -113,3 +113,7 @@ def : Pat<(TF_Conv2DOp:$output
            (SamePadding $paddings, $input, $output, $strides),
            (ValidFilterShape $dequantized_input, $filter_op)],
           (addBenefit 90)>;
+
+
+def : Pat<(PairwiseHamming $arg),
+	     (LQ_BPairwiseHammingOp $arg)>;
